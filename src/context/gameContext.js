@@ -18,7 +18,7 @@ const initState = {
     .map(() => Array(5).fill("")),
   attempt: 0,
   letterPosition: 0,
-  correctWord: "RIGHT",
+  correctWord: "",
   wordSet: null,
   disabledLetters: [],
   keyPressed: (char) => {},
@@ -53,7 +53,8 @@ const reducer = (state, action) => {
     case actions.LOAD_WORDSET:
       return {
         ...state,
-        wordSet: action.payload,
+        wordSet: action.payload.wordSet,
+        correctWord: action.payload.correctWord
       };
     case actions.DISABLE_LETTER:
       return {
@@ -130,9 +131,15 @@ const GameProvider = (props) => {
   const loadWordSet = async () => {
     if (state.wordSet !== null) return;
     const wSet = await generateWordSet();
+    // Get random word from here, make this twofold
+    const forRand = Array.from(wSet);
+    const randomWord = forRand[Math.floor(Math.random() * forRand.length)];
     dispatch({
       type: actions.LOAD_WORDSET,
-      payload: wSet,
+      payload: {
+        wordSet: wSet,
+        correctWord: randomWord
+      },
     });
   };
 

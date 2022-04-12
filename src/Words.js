@@ -57,7 +57,7 @@ function guessColor(guess, word, index) {
 export const getAttemptColoring = (guess, correct) => {
   let colors = [];
   for (let i = 0; i < 5; i++) {
-    colors.push(guessColor(guess, correct, i));
+    colors.push(guessColor(guess.toLowerCase(), correct.toLowerCase(), i));
   }
   return colors;
 };

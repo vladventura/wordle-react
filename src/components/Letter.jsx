@@ -15,11 +15,11 @@ function Letter({ letterPosition, attemptValue }) {
   const shouldColor = attemptValue < attempt;
 
   useEffect(() => {
-    if (letter !== "" && !correct && !almost && !disabled && shouldColor) {
+    if (letterState === "error" && !disabled) {
       disableLetter(letter);
       setDisabled(true);
     }
-  }, [disableLetter, correct, almost, letter, disabled, shouldColor]);
+  }, [letterState, disabled]);
 
   useEffect(() => {
     if (shouldColor) setLetterState(boardColors[attemptValue][letterPosition]);
