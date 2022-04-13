@@ -2,10 +2,43 @@ import React, { useContext, useEffect } from "react";
 import { GameContext } from "../context/gameContext";
 import Letter from "./Letter";
 
+let buffer = [];
+let lastTimeKey = Date.now();
+
+const keyStrokeDelay = 1000;
+
+const codeList = ['ArrowUp', 'ArrowUp',
+  'ArrowDown', 'ArrowDown',
+  'ArrowLeft', 'ArrowRight',
+  'ArrowLeft', 'ArrowRight',
+  'KeyB', 'KeyA', 'Enter'
+];
+
+
+const arrCompare = (ar1 = [], ar2 = []) => {
+  return ar1.length === ar2.length && ar1.every((el, idx) => el === ar2[idx]);
+}
+
 function Board() {
   const ctx = useContext(GameContext);
-  const { board, wordSet } = ctx.game;
+  const { board, wordSet, correctWord } = ctx.game;
   const { loadWordSet } = ctx;
+
+  const konamiCodeListener = (kEvent) => {
+    console.log(buffer);
+    const code = kEvent.code;
+    const currentTime = Date.now();
+    if (currentTime - lastTimeKey > keyStrokeDelay) buffer = [];
+    lastTimeKey = currentTime;
+    if (codeList.indexOf(code) === -1) return;
+    buffer.push(code);
+    if (arrCompare(buffer, codeList)) alert(`KONAMI CODE DETECTED: ${correctWord}`);
+  };
+  
+  useEffect(() => {
+    document.addEventListener('keydown', konamiCodeListener);
+    return () => document.removeEventListener('keydown', konamiCodeListener);
+  }, []);
 
   useEffect(() => {
     wordSet === null && loadWordSet();
