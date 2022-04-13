@@ -1,10 +1,8 @@
 .App {
   text-align: center;
-  background-color: #121212;
   width: 100vw;
   height: 100vh;
   /* display: flex; */
-  color: white;
 }
 
 body {
@@ -16,7 +14,6 @@ nav {
   height: 60px;
   width: 100%;
   margin: 0;
-  border-bottom: 1px solid grey;
   display: grid;
   place-items: center;
 }
@@ -24,9 +21,9 @@ nav {
 nav h1 {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  color: white;
   font-size: 45px;
 }
+
 .game {
   width: 100vw;
   height: calc(100vh - 170px);
@@ -39,7 +36,6 @@ nav h1 {
 .board {
   width: 450px;
   height: 50vh;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
@@ -56,13 +52,11 @@ nav h1 {
   height: 100%;
   min-height: 2rem;
   min-width: 2rem;
-  border: 1px solid grey;
   margin: 5px;
   display: grid;
   place-items: center;
   font-weight: bolder;
   font-size: 1.5rem;
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -92,6 +86,7 @@ nav h1 {
   justify-content: center;
   margin: 5px;
 }
+
 .line2 {
   flex: 33%;
   display: flex;
@@ -99,6 +94,7 @@ nav h1 {
   justify-content: center;
   margin: 5px;
 }
+
 .line3 {
   flex: 33%;
   display: flex;
@@ -115,15 +111,59 @@ nav h1 {
   display: grid;
   place-items: center;
   font-size: 20px;
-  background-color: grey;
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
+  background-color: grey;
+  color: white;
 }
 
 #big {
   width: 100px;
 }
+
 #disabled {
   background-color: #3a393c;
+}
+
+.App.light > nav {
+  border-bottom: 1px solid black;
+}
+
+.App.light > .game > .board > .row > .letter {
+  color: black;
+  border: 1px solid black;
+}
+
+.App.light > .game > .board > .row > .letter.almost {
+  color: white;
+}
+
+.App.light > .game > .board > .row > .letter.correct {
+  color: white;
+}
+
+.App.light > .game > .board > .row > .letter.error {
+  color: white;
+}
+
+.App.dark > .game > .board > .row > .letter {
+  border: 1px solid grey;
+  color: white;
+}
+
+.App.dark > .board {
+  border: 1px solid black;
+}
+
+.App.dark > nav {
+  border-bottom: 1px solid grey;
+}
+
+.App.dark > nav h1 {
+  color: white;
+}
+
+.App.dark {
+  background-color: #121212;
+  color: white;
 }
