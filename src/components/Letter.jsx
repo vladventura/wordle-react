@@ -5,12 +5,9 @@ function Letter({ letterPosition, attemptValue }) {
   const [disabled, setDisabled] = useState(false);
   const [letterState, setLetterState] = useState("");
   const ctx = useContext(GameContext);
-  const { board, correctWord, attempt, boardColors } = ctx.game;
+  const { board, attempt, boardColors } = ctx.game;
   const { disableLetter } = ctx;
   const letter = board[attemptValue][letterPosition];
-
-  const correct = correctWord[letterPosition] === letter;
-  const almost = correctWord.includes(letter);
 
   const shouldColor = attemptValue < attempt;
 
@@ -19,7 +16,7 @@ function Letter({ letterPosition, attemptValue }) {
       disableLetter(letter);
       setDisabled(true);
     }
-  }, [letterState, disabled]);
+  }, [letterState, disabled, disableLetter, letter]);
 
   useEffect(() => {
     if (shouldColor) setLetterState(boardColors[attemptValue][letterPosition]);

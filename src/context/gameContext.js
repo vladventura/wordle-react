@@ -98,7 +98,6 @@ const GameProvider = (props) => {
       );
       const newColoring = [...state.boardColors];
       newColoring[attempt] = currentAttemptColoring;
-      console.log(currentAttemptColoring);
       dispatch({
         type: actions.ENTER_PRESSED,
         payload: {
