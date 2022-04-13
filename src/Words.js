@@ -10,7 +10,7 @@ export const boardDefault = [
 ];
 
 export const generateWordSet = async () => {
-  return fetch(wordBank)
+  return fetch('https://raw.githubusercontent.com/tabatkins/wordle-list/main/words')
     .then((res) => res.text())
     .then((result) => {
       const wordArray = result.split("\n");
