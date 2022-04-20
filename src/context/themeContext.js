@@ -5,7 +5,7 @@ const actions = {
 }
 
 const initState = {
-    theme: "dark",
+    theme: "light",
     flipTheme: () => { }
 }
 
