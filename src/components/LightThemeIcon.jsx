@@ -1,3 +1,4 @@
+// Credits: https://www.svgrepo.com/svg/304624/sun-light-theme
 export const LightThemeIcon = () => (
   <svg width="36px" height="36px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
     <g id="Lager_93" data-name="Lager 93" transform="translate(2 2)">

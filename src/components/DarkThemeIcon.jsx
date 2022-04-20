@@ -1,3 +1,4 @@
+// Credits: https://www.svgrepo.com/svg/304625/moon-dark-theme
 export const DarkThemeIcon = () => (
     <svg width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <g id="Lager_94" data-name="Lager 94" transform="translate(0)">
